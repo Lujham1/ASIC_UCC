@@ -2,90 +2,127 @@
 
 Este repositorio contiene el diseño colaborativo a nivel de circuito y layout físico de nuestro ASIC. El proyecto evalúa dos arquitecturas distintas (`Enfoque_A` y `Enfoque_B`) utilizando el nodo tecnológico **IHP SG13G2 (130nm)** y herramientas Open-Source EDA.
 
-Para asegurar que todo el equipo trabaje con las mismas versiones de software y reglas de diseño (PDK), utilizamos el entorno virtualizado unificado de **OSIC Tools** basado en contenedores.
+Para asegurar que todo el equipo trabaje con exactamente la misma versión del PDK y de las herramientas, utilizamos el contenedor **IIC-OSIC-TOOLS** corriendo sobre **Podman** en modo X-Server nativo (WSLg).
 
 ---
 
 ## 💻 Fase 1: Instalación del Entorno (Solo la primera vez)
 
-No necesitas configurar contenedores ni variables de entorno manualmente. Abre tu terminal y ejecuta el comando correspondiente a tu sistema operativo para instalar las herramientas y el PDK de IHP.
+Abre **PowerShell como Administrador** y ejecuta el instalador interactivo oficial:
 
-### Instalación en Windows
-Abre **PowerShell como Administrador** y ejecuta:
 ```powershell
-powershell -c "irm https://osic.tools/install.ps1 | iex"
+powershell -c "irm [https://osic.tools/install.ps1](https://osic.tools/install.ps1) | iex"
 ```
 
-**⚠️ MUY IMPORTANTE: Durante la instalación en Windows, el script te hará varias preguntas. Respóndelas así:**
-1. **Disclaimer:** Te pedirá aceptar responsabilidad `[y/N]`. Escribe `y` y presiona Enter.
-2. **Container Engine (Motor de contenedores):** Te preguntará *"Use Podman instead of Docker Desktop...?"* `[y/N]`. Escribe `y` y presiona Enter. **Es obligatorio usar Podman**.
-3. **Instalaciones individuales:** Te preguntará si quieres instalar Git, WSL2 y Podman. A todo dile que sí (`y`). 
-4. **Directorio del repositorio:** Te preguntará dónde clonar `iic-osic-tools`. Presiona **Enter** para dejar la ruta por defecto (generalmente tu carpeta de usuario).
-5. **Reinicio:** Al final te sugerirá reiniciar la PC (`y/N`). Escribe `y`. La computadora se reiniciará en 60 segundos. (Si instalaste WSL2 por primera vez, este paso es crítico).
-
-*(Si después de reiniciar algo no funciona, vuelve a abrir PowerShell como Administrador y ejecuta el mismo comando de nuevo. El script es inteligente y solo instalará lo que falte).*
+**⚠️ MUY IMPORTANTE: Durante la instalación el script te hará 5 preguntas en consola. Respóndelas así:**
+1. **Disclaimer:** Aceptar responsabilidad `[y/N]` -> Escribe **`y`** y presiona Enter.
+2. **Container Engine:** *"Use Podman instead of Docker Desktop...?"* `[y/N]` -> Escribe **`y`** y presiona Enter (**Es obligatorio usar Podman**).
+3. **Instalación de componentes:** Instalar Git, WSL2 y Podman `[y/N]` -> Escribe **`y`** en todos.
+4. **Directorio de `iic-osic-tools`:** Dónde clonar el repositorio de arranque -> Presiona **Enter** para dejar la ruta por defecto (`C:\Users\TU_USUARIO\iic-osic-tools`).
+5. **Reinicio:** Reiniciar Windows al finalizar `[y/N]` -> Escribe **`y`**.
 
 ---
 
-### Instalación en Linux
-Abre tu terminal y ejecuta:
+## ⚙️ Fase 2: Inicializar Podman y Crear el Contenedor (Solo la primera vez, tras reiniciar)
+
+Una vez que la PC reinicie, abre un **PowerShell normal** y sigue estos pasos para crear la máquina virtual y levantar por primera vez el contenedor `iic-osic-tools_xserver`:
+
+```powershell
+# 1. Inicializar y encender la máquina virtual de Podman
+podman machine init
+podman machine start
+
+# 2. Ir a la carpeta donde se descargaron los scripts de arranque de IIC-OSIC-TOOLS
+cd $env:USERPROFILE\iic-osic-tools
+
+# 3. Ejecutar el script de modo gráfico X11/WSLg (descargará ~4 GB la primera vez)
+.\start_x.bat
+```
+Al terminar, se abrirá automáticamente una **ventana de terminal de Linux** posicionada en `/foss/designs`. Además, este paso habrá creado tu contenedor persistente llamado **`iic-osic-tools_xserver`** y la carpeta `eda\designs` en tu usuario de Windows.
+
+---
+
+## 📥 Fase 3: Clonar el Proyecto en `/foss/designs`
+
+**⚠️ CRÍTICO:** El contenedor mapea tu carpeta local `eda\designs` de Windows directamente al directorio **`/foss/designs`** dentro de Linux. **El repositorio debe vivir obligatoriamente allí adentro.**
+
+Puedes clonarlo directamente desde la **terminal de Linux (`/foss/designs`)** que te abrió el contenedor (o desde PowerShell en `$env:USERPROFILE\eda\designs`):
+
 ```bash
-curl -fsSL https://osic.tools/install.sh | bash
-```
-
----
-
-## 📥 Fase 2: Clonar el Proyecto
-
-Una vez que la instalación del entorno haya finalizado y tu PC haya reiniciado, descarga el repositorio oficial de la universidad en tu computadora (abre un PowerShell normal, no hace falta que sea Administrador):
-
-```powershell
-git clone https://github.com/Lujham1/ASIC_UCC.git
+# Dentro de la terminal de Linux (en /foss/designs):
+git clone [https://github.com/Lujham1/ASIC_UCC.git](https://github.com/Lujham1/ASIC_UCC.git)
 cd ASIC_UCC
 ```
 
 ---
 
-## 🔄 Fase 3: Rutina de Trabajo Diaria
+## 🔄 Fase 4: Rutina de Trabajo Diaria (Cómo abrir las terminales y herramientas)
 
-Nunca trabajes directamente en la rama `main` para evitar conflictos con el código de tus compañeros. Sigue siempre esta secuencia:
+Cada vez que enciendas tu PC para trabajar en el diseño, sigue este flujo:
 
-### 1. Sincronizar y aislar tu tarea
+### 1. Levantar el entorno desde PowerShell (Windows)
+Abre PowerShell y ejecuta:
 ```powershell
-# 1. Trae los últimos cambios aprobados por el integrador
+podman machine start
+podman start iic-osic-tools_xserver
+```
+*(En unos segundos se abrirá en tu pantalla la **terminal de Linux** directamente en `/foss/designs`).*
+
+### 2. Sincronizar Git y crear tu rama de trabajo
+En la terminal de Linux que se abrió, entra al proyecto y asegúrate de tener los últimos cambios antes de trabajar (nunca trabajes sobre `main`):
+```bash
+cd /foss/designs/ASIC_UCC
+
+# 1. Traer los últimos cambios aprobados
 git switch main
 git pull origin main
 
-# 2. Crea tu propia rama para la tarea asignada (Ej: ruteo del bandgap)
+# 2. Crear o cambiar a tu rama asignada
 git switch -c feat/enfoqueA-bandgap
 ```
 
-### 2. Iniciar las herramientas EDA
-Abre tu terminal **dentro de la carpeta del proyecto** (`ASIC_UCC`) e inicia el entorno con el comando rápido:
-```powershell
-osic
-```
-*(Esto abrirá automáticamente tu navegador en `http://localhost:8590` con KLayout y XSchem listos para usar, y tu carpeta local vinculada al directorio `/foss/designs`).*
+### 3. Verificar el PDK y lanzar XSchem / KLayout
+Desde la **terminal de Linux** (`/foss/designs/ASIC_UCC`), verifica que el PDK activo sea **IHP SG13G2** y lanza las herramientas:
 
-### 3. Diseñar
-Navega a `/foss/designs` dentro del entorno virtual y trabaja exclusivamente en tu carpeta del `Enfoque_A` o `Enfoque_B` según la asignación. 
-**⚠️ REGLA ESTRICTA:** Tienes prohibido modificar los archivos de nivel superior (`ASIC_TOP.sch` o `ASIC_TOP.gds`). Solo el integrador del proyecto está autorizado a editarlos.
+```bash
+# Asegurar que el entorno apunte al PDK IHP SG13G2
+sak-pdk ihp-sg13g2
+
+# Para abrir XSchem (entra primero a la carpeta xschem de tu enfoque):
+cd /foss/designs/ASIC_UCC/Enfoque_A/xschem
+xschem &
+
+# Para abrir KLayout en modo edición:
+cd /foss/designs/ASIC_UCC/Enfoque_B/klayout
+klayout -e ASIC_TOP.gds &
+```
+**⚠️ REGLA ESTRICTA:** Tienes prohibido modificar los archivos de integración superior (`ASIC_TOP.sch` o `ASIC_TOP.gds`). Solo el integrador del proyecto puede editarlos.
 
 ---
 
-## ✅ Fase 4: Validación y Entrega (Pull Request)
+## 🔄 ¿Cómo actualizar el PDK y las herramientas si sale una nueva versión?
 
-Tu bloque solo será integrado al chip final si cumple con los estándares de fabricación.
+Si durante el cursado se anuncia una actualización del contenedor o del PDK `ihp-sg13g2`, ejecuta en PowerShell:
+```powershell
+# 1. Eliminar el contenedor viejo (tus archivos en /foss/designs NO se borran)
+podman rm -f iic-osic-tools_xserver
 
-1. **Verificación Local:** Tu diseño debe pasar el DRC (sin errores geométricos) y el LVS (el layout coincide con el esquemático). Toma capturas de pantalla de los reportes de verificación en verde.
-2. **Guardar en Git:**
-   ```powershell
+# 2. Descargar la nueva imagen y recrear el contenedor
+cd $env:USERPROFILE\iic-osic-tools
+git pull
+podman pull docker.io/hpretl/iic-osic-tools:latest
+.\start_x.bat
+```
+
+---
+
+## ✅ Fase 5: Validación y Entrega (Pull Request)
+
+1. **Verificación Local:** Tu bloque debe pasar **DRC Clean** y **LVS Clean**. Guarda capturas de pantalla de los reportes en verde.
+2. **Subir tus cambios a GitHub:**
+   ```bash
    git add .
-   git commit -m "feat: layout finalizado del bloque Bandgap. DRC y LVS clean."
+   git commit -m "feat: layout finalizado del bloque X. DRC y LVS clean."
+   git push -u origin feat/tu-rama
    ```
-3. **Subir a GitHub:**
-   ```powershell
-   git push -u origin feat/enfoqueA-bandgap
-   ```
-4. **Solicitar Integración:**
-   Ve a la página del repositorio en GitHub. Haz clic en el botón verde **"Compare & pull request"**. Completa el checklist de validación automático, adjunta tus capturas de pantalla y espera la revisión del integrador.
+3. **Abrir Pull Request:** Entra al repositorio en GitHub, haz clic en **"Compare & pull request"**, completa la lista de verificación adjuntando las capturas de DRC/LVS y solicita la revisión.
