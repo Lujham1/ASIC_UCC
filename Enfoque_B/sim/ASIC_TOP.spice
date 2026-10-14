@@ -1,0 +1,59 @@
+** sch_path: /workspaces/shared_xserver/TP_final/Layouts/todo/todo.sch
+.subckt todo s1 s0 vdd gnd sel0 sel1 sel2 sel3 nin out vin sel1 vbias vrst vc vgmt2 R sel3 Csense sel2 R1
+*.PININFO s1:B s0:B vdd:B gnd:B sel0:B sel1:B sel2:B sel3:B nin:B out:B vin:B sel1:B vbias:B vrst:B vc:B vgmt2:B R:B sel3:B
+*+ Csense:B sel2:B R1:B
+Mp_mid2 net1 s0 vdd vdd sg13_lv_pmos w=0.15u l=0.13u ng=1 m=1
+Mp_mid3 sel0 s1 net1 vdd sg13_lv_pmos w=0.15u l=0.13u ng=1 m=1
+Msw_R3 sel0 s1 gnd gnd sg13_lv_nmos w=0.15u l=0.13u ng=1 m=1
+Msw_R4 sel0 s0 gnd gnd sg13_lv_nmos w=0.15u l=0.13u ng=1 m=1
+M1 net2 s1 vdd vdd sg13_lv_pmos w=0.15u l=0.13u ng=1 m=1
+M2 net2 s1 gnd gnd sg13_lv_nmos w=0.15u l=0.13u ng=1 m=1
+M7 net3 s0 vdd vdd sg13_lv_pmos w=0.15u l=0.13u ng=1 m=1
+M8 net3 s0 gnd gnd sg13_lv_nmos w=0.15u l=0.13u ng=1 m=1
+Mp_mid1 net4 s0 vdd vdd sg13_lv_pmos w=0.15u l=0.13u ng=1 m=1
+Mp_mid4 sel1 net2 net4 vdd sg13_lv_pmos w=0.15u l=0.13u ng=1 m=1
+Msw_R1 sel1 net2 gnd gnd sg13_lv_nmos w=0.15u l=0.13u ng=1 m=1
+Msw_R2 sel1 s0 gnd gnd sg13_lv_nmos w=0.15u l=0.13u ng=1 m=1
+Mp_mid11 net5 net3 vdd vdd sg13_lv_pmos w=0.15u l=0.13u ng=1 m=1
+Mp_mid12 sel2 s1 net5 vdd sg13_lv_pmos w=0.15u l=0.13u ng=1 m=1
+Msw_R11 sel2 s1 gnd gnd sg13_lv_nmos w=0.15u l=0.13u ng=1 m=1
+Msw_R12 sel2 net3 gnd gnd sg13_lv_nmos w=0.15u l=0.13u ng=1 m=1
+Mp_mid13 net6 net3 vdd vdd sg13_lv_pmos w=0.15u l=0.13u ng=1 m=1
+Mp_mid14 sel3 net2 net6 vdd sg13_lv_pmos w=0.15u l=0.13u ng=1 m=1
+Msw_R13 sel3 net2 gnd gnd sg13_lv_nmos w=0.15u l=0.13u ng=1 m=1
+Msw_R14 sel3 net3 gnd gnd sg13_lv_nmos w=0.15u l=0.13u ng=1 m=1
+M_out net7 nin gnd gnd sg13_lv_nmos w=5.1u l=1.2u ng=1 m=1
+M_pmos net7 net7 vdd vdd sg13_lv_pmos w=2u l=1u ng=1 m=1
+M_in nin nin gnd gnd sg13_lv_nmos w=5.1u l=1.2u ng=1 m=1
+Mn_mid net7 sel0 out gnd sg13_lv_nmos w=0.15u l=0.13u ng=1 m=1
+Mp_mid net7 net8 out vdd sg13_lv_pmos w=0.15u l=0.13u ng=1 m=1
+M3 net8 sel0 vdd vdd sg13_lv_pmos w=0.15u l=0.13u ng=1 m=1
+M4 net8 sel0 gnd gnd sg13_lv_nmos w=0.15u l=0.13u ng=1 m=1
+MTR1 net9 net9 vdd vdd sg13_lv_pmos w=1u l=0.34u ng=1 m=1
+MTR2 net9 vin net10 gnd sg13_lv_nmos w=1u l=10u ng=1 m=1
+MTR3 net10 vdd gnd gnd sg13_lv_nmos w=10u l=0.34u ng=1 m=1
+Mn_mid1 net9 sel1 out gnd sg13_lv_nmos w=0.15u l=0.13u ng=1 m=1
+Mp_mid5 net9 net11 out vdd sg13_lv_pmos w=0.15u l=0.13u ng=1 m=1
+M5 net11 sel1 vdd vdd sg13_lv_pmos w=0.15u l=0.13u ng=1 m=1
+M6 net11 sel1 gnd gnd sg13_lv_nmos w=0.15u l=0.13u ng=1 m=1
+MT3 net13 vbias vdd vdd sg13_lv_pmos w=2u l=1u ng=1 m=1
+MT2 net12 vgmt2 vdd vdd sg13_lv_pmos w=2u l=1u ng=1 m=1
+M9 net12 net13 vc gnd sg13_lv_nmos w=5.1u l=1.2u ng=1 m=1
+M0 net13 net13 R gnd sg13_lv_nmos w=5.1u l=1.2u ng=1 m=1
+Mpbuf2 vrst net14 vdd vdd sg13_lv_pmos w=1u l=0.34u ng=1 m=1
+Mnbuf1 net14 net12 gnd gnd sg13_lv_nmos w=0.5u l=0.34u ng=1 m=1
+Mnbuf2 vrst net14 gnd gnd sg13_lv_nmos w=0.5u l=0.34u ng=1 m=1
+Ms1 vc vrst gnd gnd sg13_lv_nmos w=20u l=1.2u ng=4 m=1
+Mpbuf1 net14 net12 vdd vdd sg13_lv_pmos w=1u l=0.34u ng=1 m=1
+Msw_R vc sel3 Csense gnd sg13_lv_nmos w=5u l=0.34u ng=4 m=1
+Msw_M net15 net16 gnd gnd sg13_lv_nmos w=5u l=0.34u ng=4 m=1
+M10 net16 sel3 vdd vdd sg13_lv_pmos w=0.15u l=0.13u ng=1 m=1
+M11 net16 sel3 gnd gnd sg13_lv_nmos w=0.15u l=0.13u ng=1 m=1
+C2 vc net15 cap_cmim w=6.99e-6 l=6.99e-6 m=1
+Msw_R5 R sel2 R1 gnd sg13_lv_nmos w=5u l=0.34u ng=1 m=1
+M_R1 R vdd net17 gnd sg13_lv_nmos w=3.6u l=0.13u ng=1 m=1
+Msw_M1 net17 net18 gnd gnd sg13_lv_nmos w=5u l=0.34u ng=1 m=1
+M12 net18 sel2 vdd vdd sg13_lv_pmos w=0.15u l=0.13u ng=1 m=1
+M13 net18 sel2 gnd gnd sg13_lv_nmos w=0.15u l=0.13u ng=1 m=1
+.ends
+.end
