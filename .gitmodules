@@ -1,0 +1,4 @@
+[submodule "pdk/ihp-sg13g2"]
+	path = pdk/ihp-sg13g2
+	url = https://github.com/IHP-GmbH/IHP-Open-PDK.git
+	branch = main
