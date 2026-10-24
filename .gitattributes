@@ -1,0 +1,29 @@
+# Todos los archivos de texto se guardan y se descargan con finales de línea
+# LF (Linux), aunque se clone desde PowerShell con core.autocrlf=true.
+# Bash, Tcl, Xschem y ngspice dentro del contenedor necesitan LF.
+* text=auto eol=lf
+
+SOURCEME text eol=lf
+xschemrc text eol=lf
+*.sh     text eol=lf
+*.tcl    text eol=lf
+*.sch    text eol=lf
+*.sym    text eol=lf
+*.spice  text eol=lf
+*.spi    text eol=lf
+*.cir    text eol=lf
+*.va     text eol=lf
+*.py     text eol=lf
+*.md     text eol=lf
+*.yml    text eol=lf
+
+# Binarios: nunca convertir
+*.gds    binary
+*.gds.gz binary
+*.oas    binary
+*.png    binary
+*.jpg    binary
+*.pdf    binary
+*.pptx   binary
+*.xlsx   binary
+*.docx   binary

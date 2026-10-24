@@ -1,0 +1,26 @@
+# =============================================================================
+#  xschemrc común del repositorio ASIC_UCC
+#  - Fuerza el PDK IHP SG13G2 FIJADO en pdk/ihp-sg13g2 (submódulo, rama dev),
+#    aunque el contenedor tenga otro PDK_ROOT configurado.
+#  - Lo cargan los xschemrc de cada Enfoque_*/xschem. No hace falta editarlo.
+# =============================================================================
+set ASIC_UCC_ROOT [file dirname [file normalize [info script]]]
+set env(PDK) ihp-sg13g2
+set env(PDK_ROOT) $ASIC_UCC_ROOT/pdk/ihp-sg13g2
+# ngspice (lanzado desde xschem) lee el .spiceinit del PDK fijado
+set env(SPICE_USERINIT_DIR) $env(PDK_ROOT)/$env(PDK)/libs.tech/ngspice
+
+if {![file exists $env(PDK_ROOT)/$env(PDK)/libs.tech/xschem/xschemrc]} {
+    puts stderr "ERROR: el PDK fijado no está descargado en $env(PDK_ROOT)"
+    puts stderr "Desde PowerShell ejecutá: git submodule update --init --recursive"
+    exit 1
+}
+if {![file exists $env(PDK_ROOT)/$env(PDK)/libs.tech/ngspice/osdi/psp103.osdi]} {
+    puts stderr "AVISO: faltan los modelos OSDI. Ejecutá una vez: bash scripts/setup.sh"
+}
+
+source $env(PDK_ROOT)/$env(PDK)/libs.tech/xschem/xschemrc
+
+# La raíz del repo en el library path permite referencias portables entre
+# enfoques, p.ej.:  C {Enfoque_A/xschem/mi_bloque.sym} ...
+append XSCHEM_LIBRARY_PATH :$ASIC_UCC_ROOT

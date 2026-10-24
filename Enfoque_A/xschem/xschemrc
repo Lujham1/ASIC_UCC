@@ -1,0 +1,6 @@
+# xschemrc de este enfoque: carga la configuración común del repo
+# (PDK fijado) y agrega esta carpeta al library path.
+set _enfoque_dir [file dirname [file normalize [info script]]]
+source [file normalize $_enfoque_dir/../../xschemrc]
+append XSCHEM_LIBRARY_PATH :$_enfoque_dir
+set netlist_dir [file normalize $_enfoque_dir/../sim]

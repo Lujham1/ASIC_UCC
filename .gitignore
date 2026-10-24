@@ -1,0 +1,25 @@
+# KLayout y resultados de verificación (DRC/LVS)
+*.lyrdb
+*.lyrdb.gds
+drc_run_*/
+lvs_run_*/
+pex_run_*/
+
+# Ngspice y simulaciones
+*.raw
+*.out
+*.log
+*.ext
+
+# Archivos temporales
+*~
+*.swp
+.DS_Store
+# Archivos generados por scripts/setup.sh (locales de cada PC)
+.pdk_local/
+
+# Xschem / KLayout
+*.bak
+simulations/
+verification/
+__pycache__/

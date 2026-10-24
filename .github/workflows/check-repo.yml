@@ -1,0 +1,59 @@
+name: Verificación del repo
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          submodules: false
+
+      - name: El PDK sigue la rama dev oficial de IHP
+        run: |
+          url=$(git config -f .gitmodules submodule.pdk/ihp-sg13g2.url)
+          branch=$(git config -f .gitmodules submodule.pdk/ihp-sg13g2.branch)
+          pin=$(git ls-tree HEAD pdk/ihp-sg13g2 | awk '{print $3}')
+          echo "url=$url branch=$branch pin=$pin"
+          [ "$url" = "https://github.com/IHP-GmbH/IHP-Open-PDK.git" ] || { echo "::error::URL del submódulo inesperada"; exit 1; }
+          [ "$branch" = "dev" ] || { echo "::error::El submódulo debe seguir la rama dev"; exit 1; }
+          git init -q /tmp/pdk && cd /tmp/pdk
+          git fetch -q --filter=tree:0 https://github.com/IHP-GmbH/IHP-Open-PDK.git refs/heads/dev:refs/remotes/origin/dev
+          git merge-base --is-ancestor "$pin" origin/dev \
+            || { echo "::error::El commit fijado $pin no pertenece a la rama dev de IHP"; exit 1; }
+          echo "Commit fijado: $(git log -1 --format='%h %ad %s' --date=short "$pin")"
+          echo "Commits nuevos en dev desde el fijado: $(git rev-list --count "$pin"..origin/dev)"
+
+      - name: Sin rutas absolutas en esquemáticos
+        run: |
+          bad=$(git ls-files '*.sch' '*.sym' | xargs -r grep -n -E '(^C \{(/|[A-Za-z]:)|\.(lib|include|inc) +(/|[A-Za-z]:\\))' || true)
+          if [ -n "$bad" ]; then
+            echo "$bad"
+            echo "::error::Hay rutas absolutas (dependen de la PC de alguien). Usá rutas relativas o '.lib cornerMOSlv.lib mos_tt'."
+            exit 1
+          fi
+
+      - name: Finales de línea LF
+        run: |
+          crlf=$(git ls-files --eol | awk '$1=="i/crlf"{print $NF}')
+          if [ -n "$crlf" ]; then echo "$crlf"; echo "::error::Archivos con CRLF en el repo"; exit 1; fi
+
+      - name: Reglas de alumnos (TOP y PDK solo los cambia el integrador)
+        if: github.event_name == 'pull_request' && github.event.pull_request.user.login != github.repository_owner
+        run: |
+          base=${{ github.event.pull_request.base.sha }}
+          changed=$(git diff --name-only "$base"...HEAD)
+          echo "$changed"
+          if echo "$changed" | grep -q -E '(^|/)ASIC_TOP\.'; then
+            echo "::error::Regla 4: no se pueden modificar los archivos ASIC_TOP. Pedile el cambio al integrador."; exit 1
+          fi
+          if echo "$changed" | grep -q -x -E 'pdk/ihp-sg13g2|\.gitmodules|SOURCEME|xschemrc|scripts/setup\.sh'; then
+            echo "::error::Tu PR cambia la versión del PDK o la configuración del entorno."
+            echo "Desde PowerShell:  git checkout origin/main -- pdk/ihp-sg13g2 .gitmodules  y volvé a commitear."
+            exit 1
+          fi
