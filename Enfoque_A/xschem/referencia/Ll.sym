@@ -1,0 +1,33 @@
+v {xschem version=3.4.4 file_version=1.2
+* Transmission gate: conduce entre A y B cuando S=1 (Sn=0).
+* Pines en las mismas posiciones que el Ll.sym original del Bandgap.
+}
+G {}
+K {type=subcircuit
+format="@name @pinlist @symname"
+template="name=x1"
+}
+V {}
+S {}
+E {}
+L 4 -150 0 -130 0 {}
+L 4 -90 0 -70 0 {}
+L 4 -130 -15 -130 15 {}
+L 4 -130 -15 -90 0 {}
+L 4 -130 15 -90 0 {}
+L 4 -90 -15 -90 15 {}
+L 4 -90 -15 -130 0 {}
+L 4 -90 15 -130 0 {}
+L 4 -110 -30 -110 -7.5 {}
+A 4 -110 11.5 3.5 0 360 {}
+L 4 -110 15 -110 30 {}
+B 5 -152.5 -2.5 -147.5 2.5 {name=A dir=inout}
+B 5 -72.5 -2.5 -67.5 2.5 {name=B dir=inout}
+B 5 -112.5 -32.5 -107.5 -27.5 {name=S dir=in}
+B 5 -112.5 27.5 -107.5 32.5 {name=Sn dir=in}
+T {A} -146 -16 0 0 0.17 0.17 {}
+T {B} -74 -16 0 1 0.17 0.17 {}
+T {S} -105 -30 0 0 0.15 0.15 {}
+T {Sn} -105 18 0 0 0.15 0.15 {}
+T {@name} -150 4 0 0 0.15 0.15 {}
+T {@symname} -150 -30 0 0 0.15 0.15 {}

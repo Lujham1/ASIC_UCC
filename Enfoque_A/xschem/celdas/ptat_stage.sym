@@ -1,0 +1,48 @@
+v {xschem version=3.4.4 file_version=1.2
+* Etapa PTAT: CB + 3 TG (x3 instancias: CB1, CB2, CB3)
+}
+G {}
+K {type=subcircuit
+format="@name @pinlist @symname"
+template="name=x1"
+}
+V {}
+S {}
+E {}
+L 4 -100 -100 100 -100 {}
+L 4 100 -100 100 100 {}
+L 4 100 100 -100 100 {}
+L 4 -100 100 -100 -100 {}
+L 4 -120 -50 -100 -50 {}
+B 5 -122.5 -52.5 -117.5 -47.5 {name=top_prev dir=inout}
+T {top_prev} -96 -61 0 0 0.17 0.17 {}
+L 4 -120 -30 -100 -30 {}
+B 5 -122.5 -32.5 -117.5 -27.5 {name=bot_prev dir=inout}
+T {bot_prev} -96 -41 0 0 0.17 0.17 {}
+L 4 -120 -10 -100 -10 {}
+B 5 -122.5 -12.5 -117.5 -7.5 {name=vp1 dir=in}
+T {vp1} -96 -21 0 0 0.17 0.17 {}
+L 4 -120 10 -100 10 {}
+B 5 -122.5 7.5 -117.5 12.5 {name=vp1b dir=in}
+T {vp1b} -96 -1 0 0 0.17 0.17 {}
+L 4 -120 30 -100 30 {}
+B 5 -122.5 27.5 -117.5 32.5 {name=vp2 dir=in}
+T {vp2} -96 19 0 0 0.17 0.17 {}
+L 4 -120 50 -100 50 {}
+B 5 -122.5 47.5 -117.5 52.5 {name=vp2b dir=in}
+T {vp2b} -96 39 0 0 0.17 0.17 {}
+L 4 100 -10 120 -10 {}
+B 5 117.5 -12.5 122.5 -7.5 {name=top dir=inout}
+T {top} 96 -21 0 1 0.17 0.17 {}
+L 4 100 10 120 10 {}
+B 5 117.5 7.5 122.5 12.5 {name=bot dir=inout}
+T {bot} 96 -1 0 1 0.17 0.17 {}
+L 4 0 -120 0 -100 {}
+B 5 -2.5 -122.5 2.5 -117.5 {name=vdd2x dir=inout}
+T {vdd2x} 6 -97 0 0 0.17 0.17 {}
+L 4 0 100 0 120 {}
+B 5 -2.5 117.5 2.5 122.5 {name=gnd dir=inout}
+T {gnd} 6 87 0 0 0.17 0.17 {}
+T {@symname} 0 -84 0 0 0.2 0.2 {hcenter=true}
+T {@name} 6 -122 0 0 0.2 0.2 {}
+T {CB=0.8p} 0 66 0 0 0.17 0.17 {hcenter=true layer=8}

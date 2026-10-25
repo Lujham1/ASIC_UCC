@@ -1,0 +1,42 @@
+v {xschem version=3.4.4 file_version=1.2
+* Escalado CTAT: x7, x17, x18, Ca1, Ca2 del plano
+}
+G {}
+K {type=subcircuit
+format="@name @pinlist @symname"
+template="name=x1"
+}
+V {}
+S {}
+E {}
+L 4 -100 -90 100 -90 {}
+L 4 100 -90 100 90 {}
+L 4 100 90 -100 90 {}
+L 4 -100 90 -100 -90 {}
+L 4 -120 -40 -100 -40 {}
+B 5 -122.5 -42.5 -117.5 -37.5 {name=vbe1 dir=in}
+T {vbe1} -96 -51 0 0 0.17 0.17 {}
+L 4 -120 -20 -100 -20 {}
+B 5 -122.5 -22.5 -117.5 -17.5 {name=vp1 dir=in}
+T {vp1} -96 -31 0 0 0.17 0.17 {}
+L 4 -120 0 -100 0 {}
+B 5 -122.5 -2.5 -117.5 2.5 {name=vp1b dir=in}
+T {vp1b} -96 -11 0 0 0.17 0.17 {}
+L 4 -120 20 -100 20 {}
+B 5 -122.5 17.5 -117.5 22.5 {name=vp2 dir=in}
+T {vp2} -96 9 0 0 0.17 0.17 {}
+L 4 -120 40 -100 40 {}
+B 5 -122.5 37.5 -117.5 42.5 {name=vp2b dir=in}
+T {vp2b} -96 29 0 0 0.17 0.17 {}
+L 4 100 0 120 0 {}
+B 5 117.5 -2.5 122.5 2.5 {name=vctat dir=out}
+T {vctat} 96 -11 0 1 0.17 0.17 {}
+L 4 0 -110 0 -90 {}
+B 5 -2.5 -112.5 2.5 -107.5 {name=vdd2x dir=inout}
+T {vdd2x} 6 -87 0 0 0.17 0.17 {}
+L 4 0 90 0 110 {}
+B 5 -2.5 107.5 2.5 112.5 {name=gnd dir=inout}
+T {gnd} 6 77 0 0 0.17 0.17 {}
+T {@symname} 0 -74 0 0 0.2 0.2 {hcenter=true}
+T {@name} 6 -112 0 0 0.2 0.2 {}
+T {CA1=1p CA2=1.6p} 0 56 0 0 0.17 0.17 {hcenter=true layer=8}

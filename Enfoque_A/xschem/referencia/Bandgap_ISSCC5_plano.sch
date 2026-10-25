@@ -554,9 +554,9 @@ C {gnd.sym} -1690 -740 0 0 {name=l16 lab=0}
 C {lab_pin.sym} -1600 -580 0 0 {name=p13 sig_type=std_logic lab=/Vp2}
 C {vdd.sym} -2010 -560 0 0 {name=l18 lab=VDD}
 C {vdd.sym} -880 -1020 0 0 {name=l20 lab=VDD}
-C {Ll.sym} -1050 -450 0 0 {name=x1}
-C {Ll.sym} -860 -450 0 0 {name=x2}
-C {Ll.sym} -1050 -330 0 0 {name=x3}
+C {Enfoque_A/xschem/referencia/Ll.sym} -1050 -450 0 0 {name=x1}
+C {Enfoque_A/xschem/referencia/Ll.sym} -860 -450 0 0 {name=x2}
+C {Enfoque_A/xschem/referencia/Ll.sym} -1050 -330 0 0 {name=x3}
 C {vsource.sym} -1910 -640 0 0 {name=V5 value="pulse( 2.2 0 0 10n 10n 15.0088u 30.5176u)"}
 C {gnd.sym} -1910 -600 0 0 {name=l8 lab=0}
 C {lab_pin.sym} -1390 -880 0 0 {name=p2 sig_type=std_logic lab=/Vp1real}
@@ -586,10 +586,10 @@ footprint=1206
 device="ceramic capacitor"}
 C {gnd.sym} -210 -210 0 0 {name=l6 lab=0}
 C {gnd.sym} 40 -310 0 0 {name=l19 lab=0}
-C {Ll.sym} -180 -450 0 0 {name=x4}
-C {Ll.sym} 10 -450 0 0 {name=x5}
-C {Ll.sym} -180 -330 0 0 {name=x6}
-C {Ll.sym} -880 20 1 0 {name=x7}
+C {Enfoque_A/xschem/referencia/Ll.sym} -180 -450 0 0 {name=x4}
+C {Enfoque_A/xschem/referencia/Ll.sym} 10 -450 0 0 {name=x5}
+C {Enfoque_A/xschem/referencia/Ll.sym} -180 -330 0 0 {name=x6}
+C {Enfoque_A/xschem/referencia/Ll.sym} -880 20 1 0 {name=x7}
 C {lab_pin.sym} -880 170 0 0 {name=p3 sig_type=std_logic lab=3}
 C {capa.sym} -880 210 0 0 {name=Ca2
 m=1
@@ -597,20 +597,20 @@ value=1.6p
 footprint=1206
 device="ceramic capacitor"}
 C {gnd.sym} -880 270 0 0 {name=l1 lab=0}
-C {Ll.sym} -890 -20 0 1 {name=x8}
-C {Ll.sym} -750 -20 0 1 {name=x9}
-C {Ll.sym} -570 -20 0 1 {name=x10}
+C {Enfoque_A/xschem/referencia/Ll.sym} -890 -20 0 1 {name=x8}
+C {Enfoque_A/xschem/referencia/Ll.sym} -750 -20 0 1 {name=x9}
+C {Enfoque_A/xschem/referencia/Ll.sym} -570 -20 0 1 {name=x10}
 C {lab_pin.sym} -350 -20 0 0 {name=p4 sig_type=std_logic lab=7}
 C {capa.sym} -710 50 0 0 {name=Cb1
 m=1
 value=0.8p
 footprint=1206
 device="ceramic capacitor"}
-C {Ll.sym} -900 60 0 1 {name=x11}
-C {Ll.sym} -750 130 0 1 {name=x12}
-C {Ll.sym} -600 130 0 1 {name=x13}
-C {Ll.sym} -740 60 0 1 {name=x14}
-C {Ll.sym} -580 60 0 1 {name=x15}
+C {Enfoque_A/xschem/referencia/Ll.sym} -900 60 0 1 {name=x11}
+C {Enfoque_A/xschem/referencia/Ll.sym} -750 130 0 1 {name=x12}
+C {Enfoque_A/xschem/referencia/Ll.sym} -600 130 0 1 {name=x13}
+C {Enfoque_A/xschem/referencia/Ll.sym} -740 60 0 1 {name=x14}
+C {Enfoque_A/xschem/referencia/Ll.sym} -580 60 0 1 {name=x15}
 C {capa.sym} -550 50 0 0 {name=Cb2
 m=1
 value=0.8p
@@ -627,9 +627,9 @@ value=6p
 footprint=1206
 device="ceramic capacitor"}
 C {gnd.sym} -200 130 0 0 {name=l2 lab=0}
-C {Ll.sym} -400 -20 0 1 {name=x16}
-C {Ll.sym} -1070 -20 0 1 {name=x17}
-C {Ll.sym} -1080 90 3 0 {name=x18}
+C {Enfoque_A/xschem/referencia/Ll.sym} -400 -20 0 1 {name=x16}
+C {Enfoque_A/xschem/referencia/Ll.sym} -1070 -20 0 1 {name=x17}
+C {Enfoque_A/xschem/referencia/Ll.sym} -1080 90 3 0 {name=x18}
 C {capa.sym} -1010 210 0 0 {name=Ca1
 m=1
 value=1p
@@ -643,5 +643,5 @@ C {lab_pin.sym} -1010 140 0 0 {name=p7 sig_type=std_logic lab=4}
 C {lab_pin.sym} -550 -10 0 0 {name=p8 sig_type=std_logic lab=5}
 C {lab_pin.sym} -550 110 0 0 {name=p14 sig_type=std_logic lab=6}
 C {lab_pin.sym} -350 100 0 0 {name=p16 sig_type=std_logic lab=8}
-C {Ll.sym} 10 210 0 0 {name=x19}
+C {Enfoque_A/xschem/referencia/Ll.sym} 10 210 0 0 {name=x19}
 C {lab_pin.sym} -710 140 0 0 {name=p17 sig_type=std_logic lab=1}

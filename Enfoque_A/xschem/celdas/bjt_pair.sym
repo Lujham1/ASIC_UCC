@@ -1,0 +1,27 @@
+v {xschem version=3.4.4 file_version=1.2
+* Bipolares Q1 (Nx=1) y Q2 (Nx=8) en diodo
+}
+G {}
+K {type=subcircuit
+format="@name @pinlist @symname"
+template="name=x1"
+}
+V {}
+S {}
+E {}
+L 4 -100 -60 100 -60 {}
+L 4 100 -60 100 60 {}
+L 4 100 60 -100 60 {}
+L 4 -100 60 -100 -60 {}
+L 4 100 -10 120 -10 {}
+B 5 117.5 -12.5 122.5 -7.5 {name=vbe1 dir=inout}
+T {vbe1} 96 -21 0 1 0.17 0.17 {}
+L 4 100 10 120 10 {}
+B 5 117.5 7.5 122.5 12.5 {name=vbe2 dir=inout}
+T {vbe2} 96 -1 0 1 0.17 0.17 {}
+L 4 0 60 0 80 {}
+B 5 -2.5 77.5 2.5 82.5 {name=gnd dir=inout}
+T {gnd} 6 47 0 0 0.17 0.17 {}
+T {@symname} 0 -44 0 0 0.2 0.2 {hcenter=true}
+T {@name} -100 -82 0 0 0.2 0.2 {}
+T {1 : 8} 0 26 0 0 0.17 0.17 {hcenter=true layer=8}

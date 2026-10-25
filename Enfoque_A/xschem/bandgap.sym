@@ -1,0 +1,36 @@
+v {xschem version=3.4.4 file_version=1.2
+* Bandgap SC completo (Enfoque_A)
+}
+G {}
+K {type=subcircuit
+format="@name @pinlist @symname"
+template="name=x1"
+}
+V {}
+S {}
+E {}
+L 4 -100 -70 100 -70 {}
+L 4 100 -70 100 70 {}
+L 4 100 70 -100 70 {}
+L 4 -100 70 -100 -70 {}
+L 4 -120 -20 -100 -20 {}
+B 5 -122.5 -22.5 -117.5 -17.5 {name=vdd dir=in}
+T {vdd} -96 -31 0 0 0.17 0.17 {}
+L 4 -120 0 -100 0 {}
+B 5 -122.5 -2.5 -117.5 2.5 {name=vp1 dir=in}
+T {vp1} -96 -11 0 0 0.17 0.17 {}
+L 4 -120 20 -100 20 {}
+B 5 -122.5 17.5 -117.5 22.5 {name=vp2 dir=in}
+T {vp2} -96 9 0 0 0.17 0.17 {}
+L 4 100 0 120 0 {}
+B 5 117.5 -2.5 122.5 2.5 {name=vref dir=out}
+T {vref} 96 -11 0 1 0.17 0.17 {}
+L 4 0 -90 0 -70 {}
+B 5 -2.5 -92.5 2.5 -87.5 {name=vdd2x dir=inout}
+T {vdd2x} 6 -67 0 0 0.17 0.17 {}
+L 4 0 70 0 90 {}
+B 5 -2.5 87.5 2.5 92.5 {name=gnd dir=inout}
+T {gnd} 6 57 0 0 0.17 0.17 {}
+T {@symname} 0 -54 0 0 0.2 0.2 {hcenter=true}
+T {@name} 6 -92 0 0 0.2 0.2 {}
+T {VREF ~ 560 mV} 0 36 0 0 0.17 0.17 {hcenter=true layer=8}

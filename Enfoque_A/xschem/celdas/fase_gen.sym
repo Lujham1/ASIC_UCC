@@ -1,0 +1,36 @@
+v {xschem version=3.4.4 file_version=1.2
+* Inversores de fase: vp1b = /vp1, vp2b = /vp2
+}
+G {}
+K {type=subcircuit
+format="@name @pinlist @symname"
+template="name=x1"
+}
+V {}
+S {}
+E {}
+L 4 -100 -60 100 -60 {}
+L 4 100 -60 100 60 {}
+L 4 100 60 -100 60 {}
+L 4 -100 60 -100 -60 {}
+L 4 -120 -10 -100 -10 {}
+B 5 -122.5 -12.5 -117.5 -7.5 {name=vp1 dir=in}
+T {vp1} -96 -21 0 0 0.17 0.17 {}
+L 4 -120 10 -100 10 {}
+B 5 -122.5 7.5 -117.5 12.5 {name=vp2 dir=in}
+T {vp2} -96 -1 0 0 0.17 0.17 {}
+L 4 100 -10 120 -10 {}
+B 5 117.5 -12.5 122.5 -7.5 {name=vp1b dir=out}
+T {vp1b} 96 -21 0 1 0.17 0.17 {}
+L 4 100 10 120 10 {}
+B 5 117.5 7.5 122.5 12.5 {name=vp2b dir=out}
+T {vp2b} 96 -1 0 1 0.17 0.17 {}
+L 4 0 -80 0 -60 {}
+B 5 -2.5 -82.5 2.5 -77.5 {name=vdd2x dir=inout}
+T {vdd2x} 6 -57 0 0 0.17 0.17 {}
+L 4 0 60 0 80 {}
+B 5 -2.5 77.5 2.5 82.5 {name=gnd dir=inout}
+T {gnd} 6 47 0 0 0.17 0.17 {}
+T {@symname} 0 -44 0 0 0.2 0.2 {hcenter=true}
+T {@name} 6 -82 0 0 0.2 0.2 {}
+T {NOT x2} 0 26 0 0 0.17 0.17 {hcenter=true layer=8}
