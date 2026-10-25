@@ -1,0 +1,45 @@
+v {xschem version=3.4.4 file_version=1.2
+* Inf. v2 Sec. 5: espejo potenciostato + llave
+}
+G {}
+K {type=subcircuit
+format="@name @pinlist @symname"
+template="name=x1"
+}
+V {}
+S {}
+E {}
+L 4 -100 -60 100 -60 {}
+L 4 100 -60 100 60 {}
+L 4 100 60 -100 60 {}
+L 4 -100 60 -100 -60 {}
+L 4 -120 0 -100 0 {}
+L 4 -120 40 -100 40 {}
+L 4 100 0 120 0 {}
+L 4 0 -80 0 -60 {}
+L 4 0 60 0 80 {}
+B 5 -122.5 -2.5 -117.5 2.5 {name=ipoto_in dir=in}
+B 5 -122.5 37.5 -117.5 42.5 {name=sel_poto dir=in}
+B 5 117.5 -2.5 122.5 2.5 {name=vg_mt2 dir=out}
+B 5 -2.5 -82.5 2.5 -77.5 {name=vdd dir=inout}
+B 5 -2.5 77.5 2.5 82.5 {name=gnd dir=inout}
+T {ipoto_in} -96 -14 0 0 0.2 0.2 {}
+T {sel_poto} -96 26 0 0 0.2 0.2 {}
+T {vg_mt2} 96 -14 0 1 0.2 0.2 {}
+T {vdd} 6 -57 0 0 0.17 0.17 {}
+T {gnd} 6 47 0 0 0.17 0.17 {}
+T {@symname} 0 -44 0 0 0.2 0.2 {hcenter=true}
+T {@name} 6 -80 0 0 0.2 0.2 {}
+L 4 -100 0 -44 0 {}
+A 4 -30 0 14 0 360 {}
+L 4 -40 0 -20 0 {}
+L 4 -25 -4 -20 0 {}
+L 4 -25 4 -20 0 {}
+T {1:1} -30 17 0 0 0.15 0.15 {hcenter=true}
+L 4 -16 0 15 0 {}
+A 4 15 0 2.5 0 360 {fill=true}
+A 4 50 0 2.5 0 360 {fill=true}
+L 4 15 0 45 -14 {}
+L 4 50 0 100 0 {}
+L 4 -100 40 31.5 40 {dash=4}
+L 4 31.5 40 31.5 -4.700000000000001 {dash=4}
