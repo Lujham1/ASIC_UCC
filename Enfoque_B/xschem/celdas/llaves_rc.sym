@@ -1,0 +1,48 @@
+v {xschem version=3.4.4 file_version=1.2
+* Llaves NMOS 5/0.34 a Rref/Rsens (S_M0) y C1/Csens (S_M1), con C1 = 10 pF integrado
+}
+G {}
+K {type=subcircuit
+format="@name @pinlist @symname"
+template="name=x1"
+}
+V {}
+S {}
+E {}
+L 4 -100 -100 100 -100 {}
+L 4 100 -100 100 100 {}
+L 4 100 100 -100 100 {}
+L 4 -100 100 -100 -100 {}
+L 4 -120 -50 -100 -50 {}
+B 5 -122.5 -52.5 -117.5 -47.5 {name=s_m0 dir=inout}
+T {s_m0} -96 -61 0 0 0.17 0.17 {}
+L 4 -120 -30 -100 -30 {}
+B 5 -122.5 -32.5 -117.5 -27.5 {name=s_m1 dir=inout}
+T {s_m1} -96 -41 0 0 0.17 0.17 {}
+L 4 -120 -10 -100 -10 {}
+B 5 -122.5 -12.5 -117.5 -7.5 {name=sel3 dir=in}
+T {sel3} -96 -21 0 0 0.17 0.17 {}
+L 4 -120 10 -100 10 {}
+B 5 -122.5 7.5 -117.5 12.5 {name=sel4 dir=in}
+T {sel4} -96 -1 0 0 0.17 0.17 {}
+L 4 -120 30 -100 30 {}
+B 5 -122.5 27.5 -117.5 32.5 {name=sel5 dir=in}
+T {sel5} -96 19 0 0 0.17 0.17 {}
+L 4 -120 50 -100 50 {}
+B 5 -122.5 47.5 -117.5 52.5 {name=sel6 dir=in}
+T {sel6} -96 39 0 0 0.17 0.17 {}
+L 4 100 -20 120 -20 {}
+B 5 117.5 -22.5 122.5 -17.5 {name=rref_ext dir=inout}
+T {rref_ext} 96 -31 0 1 0.17 0.17 {}
+L 4 100 0 120 0 {}
+B 5 117.5 -2.5 122.5 2.5 {name=rsens_ext dir=inout}
+T {rsens_ext} 96 -11 0 1 0.17 0.17 {}
+L 4 100 20 120 20 {}
+B 5 117.5 17.5 122.5 22.5 {name=csens_ext dir=inout}
+T {csens_ext} 96 9 0 1 0.17 0.17 {}
+L 4 0 100 0 120 {}
+B 5 -2.5 117.5 2.5 122.5 {name=gnd dir=inout}
+T {gnd} 6 87 0 0 0.17 0.17 {}
+T {@symname} 0 -84 0 0 0.2 0.2 {hcenter=true}
+T {@name} -100 -122 0 0 0.2 0.2 {}
+T {C1 = 10p} 0 66 0 0 0.17 0.17 {hcenter=true layer=8}
