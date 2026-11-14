@@ -111,9 +111,9 @@ N 320 0 400 0 {lab=gnd}
 C {lab_pin.sym} 400 0 2 0 {name=l31 sig_type=std_logic lab=gnd}
 C {sg13g2_pr/cap_cmim.sym} 500 -100 0 0 {name=CD
 model=cap_cmim
-w=57.68e-6
-l=57.68e-6
-m=2
+w=44.67e-6
+l=44.67e-6
+m=1
 spiceprefix=X}
 N 500 -130 500 -150 {lab=n_buf}
 C {lab_pin.sym} 500 -150 0 0 {name=l32 sig_type=std_logic lab=n_buf}
@@ -153,8 +153,8 @@ N 720 0 800 0 {lab=gnd}
 C {lab_pin.sym} 800 0 2 0 {name=l41 sig_type=std_logic lab=gnd}
 C {sg13g2_pr/sg13_lv_nmos.sym} 700 200 0 0 {name=Ms1
 l=1.2u
-w=20u
-ng=4
+w=60u
+ng=12
 m=1
 model=sg13_lv_nmos
 spiceprefix=X
@@ -167,6 +167,6 @@ N 720 230 800 230 {lab=gnd}
 C {lab_pin.sym} 800 230 2 0 {name=l44 sig_type=std_logic lab=gnd}
 N 720 200 800 200 {lab=gnd}
 C {lab_pin.sym} 800 200 2 0 {name=l45 sig_type=std_logic lab=gnd}
-T {Vbias = 0.37 V (externa). S_M0 -> Rref / Rsens por llaves_rc; S_M1 -> C1 / Csens por llaves_rc.
-CD = 10 pF nuevo en la salida del primer inversor (2 MIM de 5 pF en paralelo).
-M1 = ex M9 (5.1/1.2). Ms1 descarga S_M1 cuando vrst = 1.} -700 140 0 0 0.25 0.25 {layer=8}
+T {Vbias = 0.372 V (celda ref_vbias). S_M0 -> Rref / Rsens por llaves_rc; S_M1 -> C1 / Csens por llaves_rc.
+CD = 3 pF en la salida del primer inversor (un MIM).
+M1 = ex M9 (5.1/1.2). Ms1 (60/1.2, 12 dedos de 5 um) descarga S_M1 cuando vrst = 1.} -700 140 0 0 0.25 0.25 {layer=8}
