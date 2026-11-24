@@ -81,30 +81,30 @@ C {lab_pin.sym} -100 -350 0 0 {name=l38 sig_type=std_logic lab=vvdd}
 N -100 -170 -100 -150 {lab=gnd}
 C {lab_pin.sym} -100 -150 0 0 {name=l39 sig_type=std_logic lab=gnd}
 C {Enfoque_B/xschem/celdas/llaves_gmt2.sym} -100 100 0 0 {name=x_tg}
-N -220 20 -250 20 {lab=s_mpmos}
-C {lab_pin.sym} -250 20 0 0 {name=l40 sig_type=std_logic lab=s_mpmos}
-N -220 40 -250 40 {lab=vbias}
-C {lab_pin.sym} -250 40 0 0 {name=l41 sig_type=std_logic lab=vbias}
-N -220 60 -250 60 {lab=s_mtr1}
-C {lab_pin.sym} -250 60 0 0 {name=l42 sig_type=std_logic lab=s_mtr1}
-N -220 80 -250 80 {lab=sel0}
-C {lab_pin.sym} -250 80 0 0 {name=l43 sig_type=std_logic lab=sel0}
-N -220 100 -250 100 {lab=u}
-C {lab_pin.sym} -250 100 0 0 {name=l44 sig_type=std_logic lab=u}
-N -220 120 -250 120 {lab=sel1}
-C {lab_pin.sym} -250 120 0 0 {name=l45 sig_type=std_logic lab=sel1}
-N -220 140 -250 140 {lab=t}
-C {lab_pin.sym} -250 140 0 0 {name=l46 sig_type=std_logic lab=t}
-N -220 160 -250 160 {lab=sel2}
-C {lab_pin.sym} -250 160 0 0 {name=l47 sig_type=std_logic lab=sel2}
-N -220 180 -250 180 {lab=v}
-C {lab_pin.sym} -250 180 0 0 {name=l48 sig_type=std_logic lab=v}
-N 20 100 50 100 {lab=g_mt2}
-C {lab_pin.sym} 50 100 2 0 {name=l49 sig_type=std_logic lab=g_mt2}
-N -100 -50 -100 -70 {lab=vvdd}
-C {lab_pin.sym} -100 -70 0 0 {name=l50 sig_type=std_logic lab=vvdd}
-N -100 250 -100 270 {lab=gnd}
-C {lab_pin.sym} -100 270 0 0 {name=l51 sig_type=std_logic lab=gnd}
+N -220 -10 -250 -10 {lab=s_mpmos}
+C {lab_pin.sym} -250 -10 0 0 {name=l40 sig_type=std_logic lab=s_mpmos}
+N -220 20 -250 20 {lab=vbias}
+C {lab_pin.sym} -250 20 0 0 {name=l41 sig_type=std_logic lab=vbias}
+N -220 50 -250 50 {lab=s_mtr1}
+C {lab_pin.sym} -250 50 0 0 {name=l42 sig_type=std_logic lab=s_mtr1}
+N -220 90 -250 90 {lab=sel0}
+C {lab_pin.sym} -250 90 0 0 {name=l43 sig_type=std_logic lab=sel0}
+N -220 110 -250 110 {lab=u}
+C {lab_pin.sym} -250 110 0 0 {name=l44 sig_type=std_logic lab=u}
+N -220 140 -250 140 {lab=sel1}
+C {lab_pin.sym} -250 140 0 0 {name=l45 sig_type=std_logic lab=sel1}
+N -220 160 -250 160 {lab=t}
+C {lab_pin.sym} -250 160 0 0 {name=l46 sig_type=std_logic lab=t}
+N -220 190 -250 190 {lab=sel2}
+C {lab_pin.sym} -250 190 0 0 {name=l47 sig_type=std_logic lab=sel2}
+N -220 210 -250 210 {lab=v}
+C {lab_pin.sym} -250 210 0 0 {name=l48 sig_type=std_logic lab=v}
+N 20 20 50 20 {lab=g_mt2}
+C {lab_pin.sym} 50 20 2 0 {name=l49 sig_type=std_logic lab=g_mt2}
+N -100 -70 -100 -90 {lab=vvdd}
+C {lab_pin.sym} -100 -90 0 0 {name=l50 sig_type=std_logic lab=vvdd}
+N -100 270 -100 290 {lab=gnd}
+C {lab_pin.sym} -100 290 0 0 {name=l51 sig_type=std_logic lab=gnd}
 C {Enfoque_B/xschem/celdas/ref_vbias.sym} 450 -620 0 0 {name=x_ref}
 N 570 -620 600 -620 {lab=vbias}
 C {lab_pin.sym} 600 -620 2 0 {name=l52 sig_type=std_logic lab=vbias}
@@ -128,23 +128,23 @@ C {lab_pin.sym} 450 -420 0 0 {name=l60 sig_type=std_logic lab=vvdd}
 N 450 -200 450 -180 {lab=gnd}
 C {lab_pin.sym} 450 -180 0 0 {name=l61 sig_type=std_logic lab=gnd}
 C {Enfoque_B/xschem/celdas/llaves_rc.sym} 450 100 0 0 {name=x_rc}
-N 330 50 300 50 {lab=s_m0}
-C {lab_pin.sym} 300 50 0 0 {name=l62 sig_type=std_logic lab=s_m0}
-N 330 70 300 70 {lab=s_m1}
-C {lab_pin.sym} 300 70 0 0 {name=l63 sig_type=std_logic lab=s_m1}
-N 330 90 300 90 {lab=sel3}
-C {lab_pin.sym} 300 90 0 0 {name=l64 sig_type=std_logic lab=sel3}
-N 330 110 300 110 {lab=sel4}
-C {lab_pin.sym} 300 110 0 0 {name=l65 sig_type=std_logic lab=sel4}
-N 330 130 300 130 {lab=sel5}
-C {lab_pin.sym} 300 130 0 0 {name=l66 sig_type=std_logic lab=sel5}
-N 330 150 300 150 {lab=sel6}
-C {lab_pin.sym} 300 150 0 0 {name=l67 sig_type=std_logic lab=sel6}
-N 570 80 600 80 {lab=rref_ext}
-C {lab_pin.sym} 600 80 2 0 {name=l68 sig_type=std_logic lab=rref_ext}
-N 570 100 600 100 {lab=rsens_ext}
-C {lab_pin.sym} 600 100 2 0 {name=l69 sig_type=std_logic lab=rsens_ext}
-N 570 120 600 120 {lab=csens_ext}
-C {lab_pin.sym} 600 120 2 0 {name=l70 sig_type=std_logic lab=csens_ext}
-N 450 220 450 240 {lab=gnd}
-C {lab_pin.sym} 450 240 0 0 {name=l71 sig_type=std_logic lab=gnd}
+N 330 60 300 60 {lab=s_m0}
+C {lab_pin.sym} 300 60 0 0 {name=l62 sig_type=std_logic lab=s_m0}
+N 330 140 300 140 {lab=s_m1}
+C {lab_pin.sym} 300 140 0 0 {name=l63 sig_type=std_logic lab=s_m1}
+N 330 20 300 20 {lab=sel3}
+C {lab_pin.sym} 300 20 0 0 {name=l64 sig_type=std_logic lab=sel3}
+N 330 40 300 40 {lab=sel4}
+C {lab_pin.sym} 300 40 0 0 {name=l65 sig_type=std_logic lab=sel4}
+N 330 160 300 160 {lab=sel5}
+C {lab_pin.sym} 300 160 0 0 {name=l66 sig_type=std_logic lab=sel5}
+N 330 180 300 180 {lab=sel6}
+C {lab_pin.sym} 300 180 0 0 {name=l67 sig_type=std_logic lab=sel6}
+N 570 40 600 40 {lab=rref_ext}
+C {lab_pin.sym} 600 40 2 0 {name=l68 sig_type=std_logic lab=rref_ext}
+N 570 80 600 80 {lab=rsens_ext}
+C {lab_pin.sym} 600 80 2 0 {name=l69 sig_type=std_logic lab=rsens_ext}
+N 570 160 600 160 {lab=csens_ext}
+C {lab_pin.sym} 600 160 2 0 {name=l70 sig_type=std_logic lab=csens_ext}
+N 450 240 450 260 {lab=gnd}
+C {lab_pin.sym} 450 260 0 0 {name=l71 sig_type=std_logic lab=gnd}

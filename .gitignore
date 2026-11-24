@@ -23,3 +23,10 @@ pex_run_*/
 simulations/
 verification/
 __pycache__/
+
+# Backups automáticos de KLayout y salidas locales
+backups/
+simulation/
+Claude outputs/
+# Netlists que genera xschem (se regeneran desde el .sch)
+Enfoque_*/sim/*.spice
