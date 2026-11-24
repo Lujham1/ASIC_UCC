@@ -1,9 +1,9 @@
-v {xschem version=3.4.5 file_version=1.2
-}
+v {xschem version=3.4.8RC file_version=1.3}
 G {}
 K {}
 V {}
 S {}
+F {}
 E {}
 N -630 -220 -630 -150 {
 lab=A}
@@ -30,8 +30,8 @@ lab=A}
 N -630 -280 -630 -220 {
 lab=A}
 C {sg13g2_pr/sg13_lv_nmos.sym} -600 -130 3 0 {name=M101
-l=0.130u
-w=0.13u
+l=0.13u
+w=0.15u
 ng=1
 m=1
 model=sg13_lv_nmos
