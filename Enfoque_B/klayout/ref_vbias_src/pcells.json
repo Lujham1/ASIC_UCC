@@ -1,0 +1,154 @@
+{
+  "top": "ref_vbias",
+  "bbox_um": "(0,-0.1;6,8.5)",
+  "proposed_size_um": [
+    6,
+    8.6
+  ],
+  "pcells": [
+    {
+      "pcell": "pmos",
+      "parameters": {
+        "Display": "Selected",
+        "Lmin": "0.13u",
+        "Wmin": "0.15u",
+        "cdf_version": "8",
+        "guardRingDistance": "1u",
+        "guardRingType": "none",
+        "l": "1u",
+        "m": "1",
+        "model": "sg13_lv_pmos",
+        "ng": 1,
+        "trise": "",
+        "w": "2u",
+        "ws": "2u"
+      },
+      "origin_um": [
+        1.5,
+        4.5
+      ]
+    },
+    {
+      "pcell": "nmos",
+      "parameters": {
+        "Display": "Selected",
+        "Lmin": "0.13u",
+        "Wmin": "0.15u",
+        "cdf_version": "8",
+        "guardRingDistance": "1u",
+        "guardRingType": "none",
+        "l": "2.2u",
+        "m": "1",
+        "model": "sg13_lv_nmos",
+        "ng": 1,
+        "trise": "",
+        "w": "0.15u",
+        "ws": "0.15u"
+      },
+      "origin_um": [
+        1.5,
+        1.5
+      ]
+    },
+    {
+      "pcell": "ntap1",
+      "parameters": {
+        "A": "6.083999999999999e-13",
+        "Calculate": "R,A",
+        "Perim": "3.1199999999999998e-06",
+        "R": "263",
+        "Rspec": "0.980n",
+        "l": "0.78u",
+        "w": "1.68u"
+      },
+      "origin_um": [
+        1.5,
+        7.2
+      ]
+    },
+    {
+      "pcell": "ptap1",
+      "parameters": {
+        "A": "6.083999999999999e-13",
+        "Calculate": "R,A",
+        "Perim": "3.1199999999999998e-06",
+        "R": "263",
+        "Rspec": "0.980n",
+        "l": "0.78u",
+        "w": "2.94u"
+      },
+      "origin_um": [
+        1.5,
+        0
+      ]
+    }
+  ],
+  "reopened_instances": [
+    {
+      "cell": "pmos",
+      "editable_pcell": true,
+      "parameters": {
+        "Display": "Selected",
+        "Lmin": "0.13u",
+        "Wmin": "0.15u",
+        "cdf_version": "8",
+        "guardRingDistance": "1u",
+        "guardRingType": "none",
+        "l": "1u",
+        "m": "1",
+        "model": "sg13_lv_pmos",
+        "ng": 1,
+        "trise": "",
+        "w": "2u",
+        "ws": "2u"
+      }
+    },
+    {
+      "cell": "nmos",
+      "editable_pcell": true,
+      "parameters": {
+        "Display": "Selected",
+        "Lmin": "0.13u",
+        "Wmin": "0.15u",
+        "cdf_version": "8",
+        "guardRingDistance": "1u",
+        "guardRingType": "none",
+        "l": "2.2u",
+        "m": "1",
+        "model": "sg13_lv_nmos",
+        "ng": 1,
+        "trise": "",
+        "w": "0.15u",
+        "ws": "0.15u"
+      }
+    },
+    {
+      "cell": "ntap1",
+      "editable_pcell": true,
+      "parameters": {
+        "A": "6.083999999999999e-13",
+        "Calculate": "R,A",
+        "Perim": "3.1199999999999998e-06",
+        "R": "263",
+        "Rspec": "0.980n",
+        "l": "0.78u",
+        "w": "1.68u"
+      }
+    },
+    {
+      "cell": "ptap1",
+      "editable_pcell": true,
+      "parameters": {
+        "A": "6.083999999999999e-13",
+        "Calculate": "R,A",
+        "Perim": "3.1199999999999998e-06",
+        "R": "263",
+        "Rspec": "0.980n",
+        "l": "0.78u",
+        "w": "2.94u"
+      }
+    }
+  ],
+  "routing": "Metal1",
+  "note": "Tutorial-style contacted wells/substrate, no optional enclosing guard rings; integrator review still required."
+}
