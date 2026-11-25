@@ -82,8 +82,8 @@ N 120 100 200 100 {lab=gnd}
 C {lab_pin.sym} 200 100 2 0 {name=l26 sig_type=std_logic lab=gnd}
 C {sg13g2_pr/cap_cmim.sym} 400 100 0 0 {name=C1
 model=cap_cmim
-w=57.68e-6
-l=57.68e-6
+w=57.67e-6
+l=57.67e-6
 m=2
 spiceprefix=X}
 N 400 70 400 50 {lab=c1_int}
@@ -92,4 +92,8 @@ N 400 130 400 150 {lab=gnd}
 C {lab_pin.sym} 400 150 0 0 {name=l28 sig_type=std_logic lab=gnd}
 T {Rref 100 k y R_sensor (NTC) son externos, a GND. C_sensor externo 20 - 200 pF a GND.
 C1 = 10 pF integrado (2 MIM de 5 pF en paralelo).
+PCell cmim SG13_dev: w=l=57,67 um; 2 x ~=4,99 pF ~= 10 pF.
 sel3 = /sel4 y sel5 = /sel6: siempre hay una R en S_M0 y un C en S_M1.} -700 240 0 0 0.25 0.25 {layer=8}
+
+
+
