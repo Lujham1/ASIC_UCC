@@ -1,0 +1,25 @@
+{
+  "layout": "Enfoque_B/klayout/ref_vbias.gds",
+  "layout_sha256": "c6abcb65b37a3f668092c393b37759a03b1421854a8bc077814d7f7f85206b80",
+  "pdk_commit": "cb743f75aabc96e30450e9e53afc8d3c4867e5e2",
+  "reference": "Enfoque_B/xschem/celdas/ref_vbias.sch; netlist exported by Xschem",
+  "drc": {
+    "status": "PASS",
+    "violations": 0,
+    "rules": {},
+    "mode": "flat",
+    "density": false,
+    "antenna": false,
+    "extra_rules": true
+  },
+  "lvs": {
+    "status": "PASS",
+    "disable_tap_extraction": true,
+    "implicit_connections": false
+  },
+  "run_dir": "Enfoque_B/klayout/verification/ref_vbias/revision_20261128/compactacion_2/20261128T211522Z",
+  "notes": [
+    "Power Grid landing locations and abutment require integrator approval.",
+    "Device sizes and connectivity follow the schematic; no new analog simulation."
+  ]
+}
