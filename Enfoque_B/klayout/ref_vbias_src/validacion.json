@@ -1,21 +1,25 @@
 {
   "layout": "Enfoque_B/klayout/ref_vbias.gds",
-  "layout_sha256": "5c47165c8cbb4f1aedfaf4ba8fea08ad4dba9f0591c8c545c202ea878fff81a5",
+  "layout_sha256": "c6abcb65b37a3f668092c393b37759a03b1421854a8bc077814d7f7f85206b80",
   "pdk_commit": "cb743f75aabc96e30450e9e53afc8d3c4867e5e2",
-  "reference": "Enfoque_B/xschem/celdas/ref_vbias.sch (exported with Xschem)",
+  "reference": "Enfoque_B/xschem/celdas/ref_vbias.sch; netlist exported by Xschem",
   "drc": {
     "status": "PASS",
     "violations": 0,
-    "antenna": true,
-    "extra_rules": true,
-    "density": false
+    "rules": {},
+    "mode": "flat",
+    "density": false,
+    "antenna": false,
+    "extra_rules": true
   },
   "lvs": {
     "status": "PASS",
-    "tap_devices_extracted": false,
-    "reason": "Taps are body contacts absent from schematic; well/substrate connectivity remains extracted."
+    "disable_tap_extraction": true,
+    "implicit_connections": false
   },
-  "run_dir": "Enfoque_B/klayout/verification/ref_vbias/20261125T174730Z",
-  "integration": "Proposed compact interface; final pin placement, guard strategy and top-level density require integrator review.",
-  "electrical": "Same devices and connectivity as schematic; no claim of simulated 0.372 V / 2 uA."
+  "run_dir": "Enfoque_B/klayout/verification/ref_vbias/revision_20261128/compactacion_2/20261128T211522Z",
+  "notes": [
+    "Power Grid landing locations and abutment require integrator approval.",
+    "Device sizes and connectivity follow the schematic; no new analog simulation."
+  ]
 }

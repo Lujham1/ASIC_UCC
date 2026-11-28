@@ -1,12 +1,24 @@
 {
   "top": "ref_vbias",
-  "bbox_um": "(0,-0.1;6,8.5)",
-  "proposed_size_um": [
-    6,
-    8.6
+  "dbu_um": 0.001,
+  "grid_um": 0.005,
+  "bbox_um": "(0.25,-0.455;3.9,5.685)",
+  "boundary_um": [
+    0.25,
+    -0.45500000000000007,
+    3.9,
+    5.685
   ],
-  "pcells": [
+  "area_um2": 22.411,
+  "compaction_limits_um": {
+    "gate_contact_to_channel_activ": 0.14,
+    "unrelated_gate_poly_space": 0.18,
+    "substrate_psd_to_nmos_gate": 0.3,
+    "power_grid_topmetal2_space": 2.0
+  },
+  "devices_and_connections": [
     {
+      "name": "Mtop",
       "pcell": "pmos",
       "parameters": {
         "Display": "Selected",
@@ -24,11 +36,13 @@
         "ws": "2u"
       },
       "origin_um": [
-        1.5,
-        4.5
-      ]
+        1.86,
+        1.955
+      ],
+      "bbox_um": "(1.55,1.645;3.85,4.265)"
     },
     {
+      "name": "Mbot",
       "pcell": "nmos",
       "parameters": {
         "Display": "Selected",
@@ -46,109 +60,151 @@
         "ws": "0.15u"
       },
       "origin_um": [
-        1.5,
-        1.5
-      ]
+        0.6,
+        1.0
+      ],
+      "bbox_um": "(0.6,0.895;3.54,1.405)"
     },
     {
-      "pcell": "ntap1",
+      "name": "body_vdd",
+      "pcell": "via_stack",
       "parameters": {
-        "A": "6.083999999999999e-13",
-        "Calculate": "R,A",
-        "Perim": "3.1199999999999998e-06",
-        "R": "263",
-        "Rspec": "0.980n",
-        "l": "0.78u",
-        "w": "1.68u"
+        "b_layer": "Activ",
+        "t_layer": "Metal1",
+        "vn_columns": 9,
+        "vn_rows": 1,
+        "vt1_columns": 1,
+        "vt1_rows": 1,
+        "vt2_columns": 1,
+        "vt2_rows": 1
       },
       "origin_um": [
-        1.5,
-        7.2
-      ]
+        2.03,
+        4.595
+      ],
+      "bbox_um": "(0.52,4.445;3.54,4.745)"
     },
     {
-      "pcell": "ptap1",
+      "name": "body_gnd",
+      "pcell": "via_stack",
       "parameters": {
-        "A": "6.083999999999999e-13",
-        "Calculate": "R,A",
-        "Perim": "3.1199999999999998e-06",
-        "R": "263",
-        "Rspec": "0.980n",
-        "l": "0.78u",
-        "w": "2.94u"
+        "b_layer": "Activ",
+        "t_layer": "Metal1",
+        "vn_columns": 9,
+        "vn_rows": 1,
+        "vt1_columns": 1,
+        "vt1_rows": 1,
+        "vt2_columns": 1,
+        "vt2_rows": 1
       },
       "origin_um": [
-        1.5,
-        0
-      ]
+        2.03,
+        0.595
+      ],
+      "bbox_um": "(0.52,0.445;3.54,0.745)"
+    },
+    {
+      "name": "gate_Mtop",
+      "pcell": "via_stack",
+      "parameters": {
+        "b_layer": "GatPoly",
+        "t_layer": "Metal2",
+        "vn_columns": 1,
+        "vn_rows": 1,
+        "vt1_columns": 1,
+        "vt1_rows": 1,
+        "vt2_columns": 1,
+        "vt2_rows": 1
+      },
+      "origin_um": [
+        2.7,
+        1.735
+      ],
+      "bbox_um": "(2.55,1.585;2.85,1.885)"
+    },
+    {
+      "name": "gate_Mbot",
+      "pcell": "via_stack",
+      "parameters": {
+        "b_layer": "GatPoly",
+        "t_layer": "Metal3",
+        "vn_columns": 1,
+        "vn_rows": 1,
+        "vt1_columns": 1,
+        "vt1_rows": 1,
+        "vt2_columns": 1,
+        "vt2_rows": 1
+      },
+      "origin_um": [
+        2.07,
+        1.445
+      ],
+      "bbox_um": "(1.92,1.295;2.22,1.595)"
+    },
+    {
+      "name": "vbias_spine",
+      "pcell": "via_stack",
+      "parameters": {
+        "b_layer": "Metal1",
+        "t_layer": "Metal2",
+        "vn_columns": 1,
+        "vn_rows": 1,
+        "vt1_columns": 1,
+        "vt1_rows": 1,
+        "vt2_columns": 1,
+        "vt2_rows": 1
+      },
+      "origin_um": [
+        3.39,
+        1.735
+      ],
+      "bbox_um": "(3.245,1.63;3.535,1.84)"
+    },
+    {
+      "name": "power_grid_vdd",
+      "pcell": "via_stack",
+      "parameters": {
+        "b_layer": "Metal1",
+        "t_layer": "TopMetal2",
+        "vn_columns": 1,
+        "vn_rows": 1,
+        "vt1_columns": 1,
+        "vt1_rows": 1,
+        "vt2_columns": 1,
+        "vt2_rows": 1
+      },
+      "origin_um": [
+        2.07,
+        4.595
+      ],
+      "bbox_um": "(1.07,3.595;3.07,5.595)"
+    },
+    {
+      "name": "power_grid_gnd",
+      "pcell": "via_stack",
+      "parameters": {
+        "b_layer": "Metal1",
+        "t_layer": "TopMetal2",
+        "vn_columns": 1,
+        "vn_rows": 1,
+        "vt1_columns": 1,
+        "vt1_rows": 1,
+        "vt2_columns": 1,
+        "vt2_rows": 1
+      },
+      "origin_um": [
+        2.07,
+        0.595
+      ],
+      "bbox_um": "(1.07,-0.405;3.07,1.595)"
     }
   ],
-  "reopened_instances": [
-    {
-      "cell": "pmos",
-      "editable_pcell": true,
-      "parameters": {
-        "Display": "Selected",
-        "Lmin": "0.13u",
-        "Wmin": "0.15u",
-        "cdf_version": "8",
-        "guardRingDistance": "1u",
-        "guardRingType": "none",
-        "l": "1u",
-        "m": "1",
-        "model": "sg13_lv_pmos",
-        "ng": 1,
-        "trise": "",
-        "w": "2u",
-        "ws": "2u"
-      }
-    },
-    {
-      "cell": "nmos",
-      "editable_pcell": true,
-      "parameters": {
-        "Display": "Selected",
-        "Lmin": "0.13u",
-        "Wmin": "0.15u",
-        "cdf_version": "8",
-        "guardRingDistance": "1u",
-        "guardRingType": "none",
-        "l": "2.2u",
-        "m": "1",
-        "model": "sg13_lv_nmos",
-        "ng": 1,
-        "trise": "",
-        "w": "0.15u",
-        "ws": "0.15u"
-      }
-    },
-    {
-      "cell": "ntap1",
-      "editable_pcell": true,
-      "parameters": {
-        "A": "6.083999999999999e-13",
-        "Calculate": "R,A",
-        "Perim": "3.1199999999999998e-06",
-        "R": "263",
-        "Rspec": "0.980n",
-        "l": "0.78u",
-        "w": "1.68u"
-      }
-    },
-    {
-      "cell": "ptap1",
-      "editable_pcell": true,
-      "parameters": {
-        "A": "6.083999999999999e-13",
-        "Calculate": "R,A",
-        "Perim": "3.1199999999999998e-06",
-        "R": "263",
-        "Rspec": "0.980n",
-        "l": "0.78u",
-        "w": "2.94u"
-      }
-    }
-  ],
-  "routing": "Metal1",
-  "note": "Tutorial-style contacted wells/substrate, no optional enclosing guard rings; integrator review still required."
+  "manual_cut_count": 0,
+  "routing": {
+    "Metal1": "straight internal device connections",
+    "Metal2": "horizontal",
+    "Metal3": "vertical"
+  },
+  "power_grid_access": "VDD and GND have editable Metal1-to-TopMetal2 via_stack landing cells.",
+  "tiling": "Not declared abutment-clean. Power-grid landing positions require integrator review."
 }

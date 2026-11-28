@@ -1,37 +1,55 @@
-# ref_vbias: version con PCells editables
+# ref_vbias — revision de layout
 
-Esquema: `Enfoque_B/xschem/celdas/ref_vbias.sch`. PDK fijado: IHP SG13G2, commit `cb743f75aabc96e30450e9e53afc8d3c4867e5e2`.
+Revision del layout entregado en el commit `6f585f0`, segun la devolucion de Lauti.
 
-## Componentes
+## Circuito conservado
 
-| Instancia del esquema | PCell SG13_dev | W / L (um) | Conexiones |
+| Instancia | PCell SG13_dev | W / L (um) | Conexion |
 |---|---|---|---|
-| Mtop | pmos | 2 / 1 | S y cuerpo a vdd; G y D a vbias |
-| Mbot | nmos | 0.15 / 2.2 | G a vdd; S y cuerpo a gnd; D a vbias |
+| Mtop | pmos | 2 / 1 | Fuente y cuerpo a vdd; gate y drain a vbias |
+| Mbot | nmos | 0.15 / 2.2 | Gate a vdd; fuente y cuerpo a gnd; drain a vbias |
 
-Los MOS tienen un dedo, multiplicidad 1 y `guardRingType=none`. Se instancian las PCells originales, sin copiar sus figuras a celdas nuevas ni aplanarlas. El generador reabre el GDS y comprueba que las cuatro instancias siguen siendo PCells editables.
+Un dedo y multiplicidad 1 en ambos MOS. PCells editables, tecnologia sg13g2 y PDK del repositorio en `cb743f75aabc96e30450e9e53afc8d3c4867e5e2`.
 
-`ntap1` conecta el pozo N del PMOS a vdd y `ptap1` conecta el sustrato a gnd. Las dimensiones de los taps son 1.68 x 0.78 um y 2.94 x 0.78 um. NWell continuo une el PMOS al ntap.
+Se conserva el nombre local `vdd` del esquema. La conexion al dominio de alimentacion del circuito, incluida VVDD, corresponde al integrador. Los valores 0.372 V / 2 uA son la anotacion del esquema; esta revision no incluye nuevas simulaciones analogicas.
 
-El esquema del video es una llave de transmision, distinta de ref_vbias. Aqui se usa la misma biblioteca y el mismo metodo de construccion con PCells, pero los tamanos y conexiones son los del esquema de ref_vbias.
+## Correcciones aplicadas
 
-## Distribucion e interfaz propuestas
+- `ntap1` y `ptap1` reemplazados por via_stack Activ -> Metal1. Los dos arrays son de 9 x 1 contactos: Activ de 3.02 x 0.30 um, similar al ancho fisico maximo de los dispositivos (2.94 um).
+- Contacto de cuerpo del PMOS dentro del NWell continuo; contacto de sustrato del NMOS encerrado en pSD, sobre el sustrato P.
+- Accesos a gates y cambios entre metales con via_stack originales del PDK. No hay cortes Cont/Via dibujados directamente en la celda superior. Los contactos internos que ya traen las PCells MOS siguen intactos.
+- Metal1 reservado a tres conexiones internas rectas entre dispositivos y contactos; sin los recorridos con vueltas de la version anterior.
+- Metal2 horizontal para unir el PMOS en diodo con vbias; Metal3 vertical para unir el gate del NMOS directamente con VDD.
+- Dos via_stack Metal1 -> TopMetal2 sobre las barras de alimentacion, para que el integrador acceda desde la Power Grid. Los stacks incluyen todos los metales intermedios. Sus areas de aterrizaje no son pistas de ruteo ni la Power Grid del chip.
+- Conductores de refuerzo donde se requieren por area minima. Son parches de metal; los contactos y vias pertenecen siempre a PCells via_stack.
+- Contactos de gate acercados a ambos transistores: la distancia entre el corte Cont sobre GatPoly y el Activ del canal es 0.14 um, minimo de la regla Cnt.e. El acceso marcado del NMOS se acerco 0.355 um; el del PMOS, 0.280 um respecto de su Activ.
+- Se compacto tambien la separacion entre los dispositivos y las barras de alimentacion. Se respetan 0.18 um entre polys independientes, 0.30 um desde pSD al gate efectivo del NMOS y 2.00 um entre los accesos de TopMetal2 de VDD/GND. Las dimensiones electricas W/L y las conexiones no cambian.
 
-PMOS en (1.5,4.5), NMOS en (1.5,1.5), ntap en (1.5,7.2) y ptap en (1.5,0), en um. La colocacion se eligio para rutear ref_vbias, no porque la posicion de los simbolos del esquema obligue al layout.
+## Contorno e interfaz propuestos
 
-Contorno propuesto: x=0..6, y=-0.1..8.5 um (6 x 8.6 um). Todo el ruteo es Metal1. Los contactos extendidos de compuerta usan GatPoly y Cont del PDK.
+Boundary: x=0.25..3.90, y=-0.455..5.685 um. Dimensiones 3.65 x 6.14 um, area 22.411 um2. Es aproximadamente 17.6 % menor que la revision local previa (27.1925 um2) y 56.6 % menor que los 51.6 um2 del primer layout.
 
-| Pin | Area de Metal1.pin (um) |
-|---|---|
-| vdd | x=0.5..1.1, y=7.44..7.74 |
-| gnd | x=2.6..3.3, y=0.24..0.54 |
-| vbias | x=5.3..5.9, y=3.75..4.05 |
+| Pin | Capa | Rectangulo accesible (um) |
+|---|---|---|
+| vdd | TopMetal2 | x=1.07..3.07; y=3.595..5.595 |
+| gnd | TopMetal2 | x=1.07..3.07; y=-0.405..1.595 |
+| vbias | Metal2 | x=3.60..3.90; y=1.635..1.835 |
 
-Los nombres usan Metal1.text (8/25), las marcas de pin Metal1.pin (8/2), y el metal conductor Metal1.drawing (8/0). El integrador conectara el pin local vdd al dominio VVDD que indica el esquema del proyecto.
+Cada pin tiene marca en la capa .pin y etiqueta de igual nombre en .text. Los accesos de VDD y GND estan alineados en x=2.07 um.
 
-La distribucion, altura, pines y estrategia de aislamiento (taps locales o anillos a nivel superior) deben revisarse con Lauti para la integracion. La version anterior con anillos esta respaldada en `Enfoque_B/klayout/backups/ref_vbias_anillos/` y no se agrega al repo por el .gitignore existente.
+La posicion definitiva de los accesos de Power Grid requiere revision de Lauti. El boundary no constituye una declaracion de que dos copias puedan encastrarse sin ajustes: no se hizo una verificacion de adyacencia. No se modifico ASIC_TOP ni la version del PDK.
 
-## Abrir y revisar
+## Comprobaciones
+
+Consultar `validacion.json` para el SHA256 exacto del GDS y los resultados:
+
+- DRC con el PDK fijado, modo Flat, sin densidad ni antena, segun el procedimiento de los videos. Incluye reglas principales y extra.
+- LVS contra el netlist exportado directamente del esquematico original con Xschem; top `ref_vbias`, pines `vbias`, `vdd`, `gnd`. Se omite la extraccion de taps como dispositivos adicionales; las conexiones de cuerpos siguen comprobadas. No se usan uniones implicitas ni se ignoran diferencias de pines.
+- `bash scripts/setup.sh --check` paso sin errores durante esta revision.
+
+Los reportes completos de esta compactacion estan dentro de `Enfoque_B/klayout/verification/ref_vbias/revision_20261128/compactacion_2/20261128T211522Z/`, carpeta ignorada por Git. DRC: 0 violaciones. LVS: netlists coincidentes. Las verificaciones de antena/densidad a nivel chip y la integracion quedan pendientes.
+
+## Abrir
 
 ```bash
 cd /foss/designs/ASIC_UCC
@@ -39,22 +57,6 @@ source ./SOURCEME
 klayout -e Enfoque_B/klayout/ref_vbias.gds &
 ```
 
-Cerrar la pestana antigua sin guardar cambios si se estaba viendo la version anterior; abrir el archivo actualizado. Mostrar toda la jerarquia. Seleccionar la instancia pmos o nmos y abrir sus propiedades para ver parametros W, L y numero de dedos. Se necesita SG13_dev del PDK fijado cargada para editar las PCells. GDS conserva contexto de KLayout; otras herramientas pueden mostrar solo su geometria.
+Mostrar toda la jerarquia para ver las PCells. `vista_previa.png` muestra todas las capas; `vista_ruteo.png` oculta Metal4 y superiores para poder seguir las conexiones de los MOS. Ambas son vistas del mismo GDS; no son capturas del navegador de resultados DRC/LVS.
 
-## Regeneracion y verificacion
-
-El generador reemplaza solo el archivo de esta celda. Guardar una copia si se hicieron ajustes manuales antes de regenerar.
-
-```bash
-cd /foss/designs/ASIC_UCC
-source ./SOURCEME
-klayout -b -r Enfoque_B/klayout/ref_vbias_src/generate_ref_vbias.py
-python3 Enfoque_B/klayout/ref_vbias_src/verify_final.py
-python3 Enfoque_B/klayout/ref_vbias_src/render.py
-```
-
-LVS compara el GDS contra el netlist exportado directamente de Xschem con `lvs_netlist=1` y `top_is_subckt=1`. `--disable_tap_extraction` omite los taps como dispositivos extra, porque el esquema no los instancia. La conectividad de pozo, sustrato y cuerpo sigue verificandose; no se ignoran pines ni se agregan uniones implicitas.
-
-DRC incluye reglas principales, extra, grilla, angulos, conectividad y antena. Densidad esta desactivada con `--no_density`; se debe resolver al integrar y rellenar el chip. Revisar `validacion.json` para el SHA256 y resultado exactos. Los reportes de cada corrida quedan en `verification/ref_vbias/`, ignorada por Git.
-
-0.372 V y 2 uA son la referencia anotada en el esquema. Se conservaron sus dispositivos; esta entrega valida geometria y equivalencia, no una simulacion analogica de esos valores.
+La entrega contiene layout, vistas y documentacion. Los auxiliares de generacion y comprobacion se conservaron localmente fuera de la entrega. Su retirada se hace como un cambio normal; la version anterior sigue disponible en el historial de Git.
